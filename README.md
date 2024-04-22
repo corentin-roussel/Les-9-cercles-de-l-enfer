@@ -14,31 +14,46 @@ place
 
 ---------------------------------------------------------------------------------------
 
-Premier cercle : Les limbes
+-Premier cercle : Les limbes
+
+Syscall: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/
+
+connect: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-connect
+accept: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-accept
+bind: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-bind
+listen: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-listen
+select: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-select
+recv: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-recv
+send: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-send
+closesocket: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-closesocket
+
+//
+
+Création d'un serveur capable d'échanger avec plusieurs clients.
 
 
-Deuxième cercle : Luxure
+-Deuxième cercle : Luxure
 
 
-Troisième cercle : Gourmandise
+-Troisième cercle : Gourmandise
 
 
-Quatrième cercle : Avarice
+-Quatrième cercle : Avarice
 
 
-Cinquième cercle : Colère
+-Cinquième cercle : Colère
 
 
-Sixième cercle : Hérésie
+-Sixième cercle : Hérésie
 
 
-Septième cercle : Violence
+-Septième cercle : Violence
 
 
-Huitième cercle : Ruse et tromperie
+-Huitième cercle : Ruse et tromperie
 
 
-Neuvième cercle : Trahison
+-Neuvième cercle : Trahison
 
 
 ---------------------------------------------------------------------------------------
