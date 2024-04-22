@@ -19,12 +19,19 @@ place
 Syscall: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/
 
 connect: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-connect
+
 accept: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-accept
+
 bind: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-bind
+
 listen: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-listen
+
 select: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-select
+
 recv: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-recv
+
 send: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-send
+
 closesocket: https://learn.microsoft.com/fr-fr/windows/win32/api/winsock2/nf-winsock2-closesocket
 
 //
@@ -57,5 +64,16 @@ Création d'un serveur capable d'échanger avec plusieurs clients.
 
 
 ---------------------------------------------------------------------------------------
+
+Liens utiles: 
+
+Compatibilité socket linux [
+
+    Port winsock to linux: https://stackoverflow.com/questions/4617478/porting-winsock-to-linux-sockets
+    Compatibility winsock linux: https://tangentsoft.com/wskfaq/articles/bsd-compatibility.html
+    Another compatibility to linux sockets: https://www.linuxhowtos.org/C_C++/socket.htm
+
+]
+
 
 gl & hf
