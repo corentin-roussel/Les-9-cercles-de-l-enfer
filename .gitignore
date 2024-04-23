@@ -1,0 +1,5 @@
+.idea
+client_prog/obj/
+server_prog/obj/
+client.exe
+server.exe
