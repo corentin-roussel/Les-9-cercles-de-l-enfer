@@ -81,6 +81,8 @@ int main()
                     client = client_sockets.erase(client);
                     continue;
                 }
+                
+                snprintf(buffer, sizeof(buffer), "Bonjour je suis le server");
                 send(*client, buffer, 1024, 0);
             }
             ++client;
