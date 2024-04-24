@@ -4,4 +4,6 @@
 #include <iostream>
 #include <string>
 
+#include "Spy.hpp"
+
 #endif

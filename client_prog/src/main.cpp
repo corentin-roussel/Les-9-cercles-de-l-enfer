@@ -4,7 +4,11 @@
 
 int main()
 {
-    std::cout << "Bonjour, je suis le client et je m'appelle " << toto() << std::endl;
+    Spy spy;
+    std::cout << spy.getComputerName() << std::endl;
+    std::cout << spy.getOS() << std::endl;
+    std::cout << spy.getUserName()<< std::endl;
+    std::cout << "Je suis une pute" << std::endl;
 
     return 0;
 }
