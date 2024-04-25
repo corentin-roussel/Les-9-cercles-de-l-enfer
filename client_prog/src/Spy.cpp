@@ -32,9 +32,10 @@ std::string Spy::getOS(){
 // Méthode pour récupérer le nom d'utilisateur
 std::string Spy::getUserName(){
     // TODOO
-    return "User name";
+    return "Useeeer name";
 }
 
+// Méthode pour récupérer la liste des processus en cours d'exécution
 std::vector<std::string> Spy::getProcessesList(){
     std::vector<std::string> processList;
 
@@ -75,5 +76,10 @@ std::vector<std::string> Spy::getProcessesList(){
         closedir(dir);
     }
     #endif
+
+
     return processList;
 }
+
+
+

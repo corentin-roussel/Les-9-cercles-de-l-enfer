@@ -1,5 +1,9 @@
 #include "../headers/utils.hpp"
 
-std::string toto(){
-    return "toto";
+void printVector(const std::vector<std::string>& vec) {
+    for(const auto& str : vec) {
+        std::cout << str << std::endl;
+    }
 }
+
+

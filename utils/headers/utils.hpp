@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 
-std::string toto();
+void printVector(std::vector<std::string>& vector);
 
 #endif

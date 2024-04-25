@@ -13,6 +13,7 @@
     #include <sys/utsname.h>
     #include <dirent.h>
     #include <cstring>
+    #include <fstream>
 #endif
 
 class Spy{

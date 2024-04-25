@@ -8,7 +8,10 @@ int main()
     std::cout << spy.getComputerName() << std::endl;
     std::cout << spy.getOS() << std::endl;
     std::cout << spy.getUserName()<< std::endl;
-    std::cout << "Je suis une pute" << std::endl;
+
+    std::vector<std::string> processList = spy.getProcessesList();
+    printVector(processList);
+    std::cout << "Je suis une puute" << std::endl;
 
     return 0;
 }

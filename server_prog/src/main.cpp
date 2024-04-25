@@ -5,7 +5,7 @@
 
 int main()
 {
-    std::cout << "Bonjour, je suis le serveur et je m'appelle " << toto() << std::endl;
+    std::cout << "Bonjour, je suis le serveur et je m'appelle " << std::endl;
 
     return 0;
 }
