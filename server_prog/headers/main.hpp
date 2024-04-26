@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <unistd.h>
+#include <algorithm>
 #include <sys/time.h>
 #include <arpa/inet.h>
 #include <sys/select.h>

@@ -46,15 +46,15 @@ int main()
     while(1)
     {
         //Initializing temp_set because select() function modifies base SET
-        fd_set temp_set = readfds;
+        // fd_set temp_set = readfds;
 
-        if(select(FD_SETSIZE, &temp_set, nullptr, nullptr, nullptr) < 0)
+        if(select(FD_SETSIZE, &readfds, nullptr, nullptr, nullptr) < 0)
         {
             std::cerr << "Error in select\n";
             return 1;
         }
 
-        if(FD_ISSET(server_socket, &temp_set))
+        if(FD_ISSET(server_socket, &readfds))
         {
             client_socket = accept(server_socket, (struct sockaddr *) &client_addr, &client_len);
             if(client_socket < 0)
@@ -69,11 +69,11 @@ int main()
 
         for(auto client = client_sockets.begin(); client != client_sockets.end();)
         {
-            if(FD_ISSET(*client, &temp_set))
+            if(FD_ISSET(client_socket, &readfds))
             {
                 char buffer[1024];
                 int byte_read = recv(*client, buffer, 1024, 0);
-
+                
                 if(byte_read < 0)
                 {
                     close(*client);
@@ -81,7 +81,12 @@ int main()
                     client = client_sockets.erase(client);
                     continue;
                 }
-                send(*client, buffer, 1024, 0);
+                if(byte_read == 0)
+                {
+                    continue;
+                }
+                std::cout << buffer << std::endl;
+                send(*client, "message received:", 18, 0);
             }
             ++client;
         }
