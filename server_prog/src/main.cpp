@@ -87,6 +87,9 @@ int main()
                 }
                 std::cout << buffer << std::endl;
                 send(*client, "message received:", 18, 0);
+                
+                snprintf(buffer, sizeof(buffer), "Bonjour je suis le server");
+                send(*client, buffer, 1024, 0);
             }
             ++client;
         }
@@ -94,7 +97,5 @@ int main()
     }
 
     close(server_socket);
-
-    std::cout << "Bonjour, je suis le serveur" << std::endl;
     return 0;
 }
