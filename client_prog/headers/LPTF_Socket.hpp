@@ -42,7 +42,7 @@ class LPTF_Socket
     sockaddr_in GetServerAdress();
     void SetServer(hostent *serverInput);
     hostent* GetServer();
-    void LPTF_Socket::EmptyBuffer();
+    void EmptyBuffer();
     void SetBuffer(std::string message);
     char* GetBuffer();
 
