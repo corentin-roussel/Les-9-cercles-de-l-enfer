@@ -9,12 +9,12 @@ void LPTF_Socket::Error(const char *msg)
 void LPTF_Socket::CreateSocket(char *serverPort)
 {
     // get server port from args
-    server_port_num = atoi(serverPort);
+    SetServerPort(atoi(serverPort));
 
     // create client socket
-    client_socket = socket(AF_INET, SOCK_STREAM, 0);
+    SetClientSocket(socket(AF_INET, SOCK_STREAM, 0));
 
-    if (client_socket < 0) 
+    if (GetClientSocket() < 0) 
     {
         Error("ERROR while creating the socket");
     }
@@ -22,26 +22,23 @@ void LPTF_Socket::CreateSocket(char *serverPort)
 
 void LPTF_Socket::ConnectToHost(char *hostName)
 {
-    // get the host's data
-    SetServer(gethostbyname(hostName));
+    int actionOutput = 0;
+    struct hostent *tempServer;
 
-    if (GetServer() == NULL) {
+    // get the host's data
+    tempServer = gethostbyname(hostName);
+
+    if (tempServer == NULL) {
         fprintf(stderr,"ERROR the host does not exist\n");
         exit(0);
     }
 
-    bzero((char *) &server_addr, sizeof(server_addr));
-    server_addr.sin_family = AF_INET;
+    SetServer(tempServer);
+    SetServerAdress();
 
-    // copy ip adress of the host in server_adrr
-    bcopy((char *)server->h_addr_list[0], 
-          (char *)&server_addr.sin_addr.s_addr,
-          server->h_length);
+    actionOutput = connect(GetClientSocket(),(struct sockaddr *) &server_addr, sizeof(GetServerAdress()));
 
-    server_addr.sin_port = htons(server_port_num);
-    action_output = connect(client_socket,(struct sockaddr *) &server_addr,sizeof(server_addr));
-
-    if (action_output < 0)
+    if (actionOutput < 0)
     {
         Error("ERROR while connecting");
     }
@@ -49,41 +46,50 @@ void LPTF_Socket::ConnectToHost(char *hostName)
 
 void LPTF_Socket::ExchangeWithHost()
 {
+    int actionOutput;
+    std::string message;
+
     while(true)
     {
-        printf("Please enter the message: ");
-        bzero(buffer,1024);
-        fgets(buffer,1023,stdin);
-        action_output = write(GetCientSocket(),buffer,strlen(buffer));
+        actionOutput = 0;
+        message = "";
 
-        if (action_output < 0) 
+
+        std::cout << "Please enter the message: " << std::endl;
+        std::cin >> message;
+        
+        SetBuffer(message);
+        
+        actionOutput = send(GetClientSocket(), buffer, strlen(buffer), 0);
+
+        if (actionOutput < 0) 
         {
             Error("ERROR while writing to socket");
         }
 
-        bzero(buffer,1024);
-        action_output = read(GetCientSocket(),buffer,255);
+        EmptyBuffer();
+        actionOutput = recv(GetClientSocket(), buffer, 1024, 0);
 
-        if (action_output < 0) 
+        if (actionOutput < 0)
         {
             Error("ERROR while reading from socket");
         }
 
-        printf("%s\n",buffer);
+        printf("%s\n", GetBuffer());
     }
 }
 
 void LPTF_Socket::CloseSocket()
 {
-    close(client_socket);
+    close(GetClientSocket());
 }
     
     
-void LPTF_Socket::SetCientSocket(int clientSocket)
+void LPTF_Socket::SetClientSocket(int clientSocket)
 {
     client_socket = clientSocket;
 }
-int LPTF_Socket::GetCientSocket()
+int LPTF_Socket::GetClientSocket()
 {
     return client_socket;
 }
@@ -97,18 +103,17 @@ int LPTF_Socket::GetServerPort()
     return server_port_num;
 }
 
-void LPTF_Socket::SetActionOutput(int actionOutput)
+void LPTF_Socket::SetServerAdress()
 {
-    action_output = actionOutput;
-}
-int LPTF_Socket::GetActionOutput()
-{
-    return action_output;
-}
+    bzero((char *) &server_addr, sizeof(server_addr));
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(GetServerPort());
 
-void LPTF_Socket::SetServerAdress(sockaddr_in serverAdress)
-{
-    server_addr = serverAdress;
+    // copy ip adress of the host in server_adrr
+    bcopy((char *)server->h_addr_list[0], 
+          (char *)&server_addr.sin_addr.s_addr,
+          server->h_length);
+
 }
 sockaddr_in LPTF_Socket::GetServerAdress()
 {
@@ -124,9 +129,14 @@ hostent* LPTF_Socket::GetServer()
     return server;
 }
 
-void LPTF_Socket::SetBuffer(char *message)
+void LPTF_Socket::EmptyBuffer()
 {
-    snprintf(buffer, sizeof(buffer), message);
+    bzero(buffer,1024);
+}
+void LPTF_Socket::SetBuffer(std::string message)
+{
+    EmptyBuffer();
+    sprintf(buffer, "%s", (char *) message.c_str());
 }
 char* LPTF_Socket::GetBuffer()
 {

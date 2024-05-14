@@ -28,23 +28,22 @@ typedef SSIZE_T ssize_t;
 class LPTF_Socket
 {
     private:
-    int client_socket, server_port_num, action_output;
+    int client_socket, server_port_num;
     struct sockaddr_in server_addr;
     struct hostent *server;
     char buffer[1024];
 
     public:
-    void SetCientSocket(int clientSocket);
-    int GetCientSocket();
+    void SetClientSocket(int clientSocket);
+    int GetClientSocket();
     void SetServerPort(int serverPort);
     int GetServerPort();
-    void SetActionOutput(int actionOutput);
-    int GetActionOutput();
-    void SetServerAdress(sockaddr_in serverAdress);
+    void SetServerAdress();
     sockaddr_in GetServerAdress();
     void SetServer(hostent *serverInput);
     hostent* GetServer();
-    void SetBuffer(char *message);
+    void LPTF_Socket::EmptyBuffer();
+    void SetBuffer(std::string message);
     char* GetBuffer();
 
     void CreateSocket(char *serverPort);

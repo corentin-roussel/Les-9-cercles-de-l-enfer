@@ -4,7 +4,6 @@
 
 int main()
 {
-
     int server_socket = 0, client_socket;
     // struct timeval timeout;
     fd_set readfds;
