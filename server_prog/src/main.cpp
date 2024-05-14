@@ -69,7 +69,7 @@ int main()
 
         for(auto client = client_sockets.begin(); client != client_sockets.end();)
         {
-            if(FD_ISSET(client_socket, &readfds))
+            if(FD_ISSET(*client, &readfds))
             {
                 char buffer[1024];
                 int byte_read = recv(*client, buffer, 1024, 0);
@@ -85,11 +85,7 @@ int main()
                 {
                     continue;
                 }
-                std::cout << buffer << std::endl;
-                send(*client, "message received:", 18, 0);
-                
-                snprintf(buffer, sizeof(buffer), "Bonjour je suis le server");
-                send(*client, buffer, 1024, 0);
+                send(*client, "Salut", 18, 0);
             }
             ++client;
         }

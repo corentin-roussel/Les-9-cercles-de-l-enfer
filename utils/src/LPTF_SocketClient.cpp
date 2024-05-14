@@ -1,12 +1,12 @@
-#include "../headers/LPTF_Socket.hpp"
+#include "../headers/LPTF_SocketClient.hpp"
 
-void LPTF_Socket::Error(const char *msg)
+void LPTF_SocketClient::Error(const char *msg)
 {
     perror(msg);
     exit(0);
 }
 
-void LPTF_Socket::CreateSocket(char *serverPort)
+void LPTF_SocketClient::CreateSocket(char *serverPort)
 {
     // get server port from args
     server_port_num = atoi(serverPort);
@@ -20,7 +20,7 @@ void LPTF_Socket::CreateSocket(char *serverPort)
     }
 }
 
-void LPTF_Socket::ConnectToHost(char *hostName)
+void LPTF_SocketClient::ConnectToHost(char *hostName)
 {
     // get the host's data
     SetServer(gethostbyname(hostName));
@@ -47,7 +47,7 @@ void LPTF_Socket::ConnectToHost(char *hostName)
     }
 }
 
-void LPTF_Socket::ExchangeWithHost()
+void LPTF_SocketClient::ExchangeWithHost()
 {
     while(true)
     {
@@ -73,62 +73,58 @@ void LPTF_Socket::ExchangeWithHost()
     }
 }
 
-void LPTF_Socket::CloseSocket()
+void LPTF_SocketClient::CloseSocket()
 {
     close(client_socket);
 }
     
     
-void LPTF_Socket::SetCientSocket(int clientSocket)
+void LPTF_SocketClient::SetCientSocket(int clientSocket)
 {
     client_socket = clientSocket;
 }
-int LPTF_Socket::GetCientSocket()
+int LPTF_SocketClient::GetCientSocket()
 {
     return client_socket;
 }
 
-void LPTF_Socket::SetServerPort(int serverPort)
+void LPTF_SocketClient::SetServerPort(int serverPort)
 {
     server_port_num = serverPort;
 }
-int LPTF_Socket::GetServerPort()
+int LPTF_SocketClient::GetServerPort()
 {
     return server_port_num;
 }
 
-void LPTF_Socket::SetActionOutput(int actionOutput)
+void LPTF_SocketClient::SetActionOutput(int actionOutput)
 {
     action_output = actionOutput;
 }
-int LPTF_Socket::GetActionOutput()
+int LPTF_SocketClient::GetActionOutput()
 {
     return action_output;
 }
 
-void LPTF_Socket::SetServerAdress(sockaddr_in serverAdress)
+void LPTF_SocketClient::SetServerAdress(sockaddr_in serverAdress)
 {
     server_addr = serverAdress;
 }
-sockaddr_in LPTF_Socket::GetServerAdress()
+sockaddr_in LPTF_SocketClient::GetServerAdress()
 {
     return server_addr;
 }
 
-void LPTF_Socket::SetServer(hostent *serverInput)
+void LPTF_SocketClient::SetServer(hostent *serverInput)
 {
     server = serverInput;
 }
-hostent* LPTF_Socket::GetServer()
+hostent* LPTF_SocketClient::GetServer()
 {
     return server;
 }
 
-void LPTF_Socket::SetBuffer(char *message)
-{
-    snprintf(buffer, sizeof(buffer), message);
-}
-char* LPTF_Socket::GetBuffer()
+char* LPTF_SocketClient::GetBuffer()
 {
     return buffer;
 }

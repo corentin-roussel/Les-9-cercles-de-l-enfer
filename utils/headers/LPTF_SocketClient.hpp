@@ -1,5 +1,5 @@
-#ifndef SOCKET
-#define SOCKET
+#ifndef LPTF_SOCKETCLIENT
+#define LPTF_SOCKETCLIENT
 
 #include <iostream>
 #include <string>
@@ -9,6 +9,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <netdb.h> 
+
 
 #if defined(_WIN32) // Windows
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
@@ -25,7 +26,7 @@ typedef SSIZE_T ssize_t;
 #define SOCKET_ERROR (-1)
 #endif
 
-class LPTF_Socket
+class LPTF_SocketClient
 {
     private:
     int client_socket, server_port_num, action_output;
@@ -44,7 +45,6 @@ class LPTF_Socket
     sockaddr_in GetServerAdress();
     void SetServer(hostent *serverInput);
     hostent* GetServer();
-    void SetBuffer(char *message);
     char* GetBuffer();
 
     void CreateSocket(char *serverPort);

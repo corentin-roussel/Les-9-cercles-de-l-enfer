@@ -1,5 +1,5 @@
 #include "../headers/main.hpp"
-#include "../headers/LPTF_Socket.hpp"
+#include "../../utils/headers/LPTF_SocketClient.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
     char *hostname = argv[1], *serverPort = argv[2];
 
-    LPTF_Socket *socketClass = new LPTF_Socket();
+    LPTF_SocketClient *socketClass = new LPTF_SocketClient();
     socketClass->CreateSocket(serverPort);
     socketClass->ConnectToHost(hostname);
     socketClass->ExchangeWithHost();
