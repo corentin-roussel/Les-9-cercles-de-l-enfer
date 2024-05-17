@@ -14,6 +14,8 @@
     #include <dirent.h>
     #include <cstring>
     #include <fstream>
+    #include <cstdlib>
+
 #endif
 
 class Spy{
@@ -23,6 +25,8 @@ class Spy{
         std::string getOS();                            /* Retourne l'OS */
         std::string getUserName();                      /* Retourne le nom de l'utilisateur */
         std::vector<std::string> getProcessesList();    /* Retourne la liste des processus en cours d'exécution */
+
+        void executeCommand(const std::string& command);
 };
 
 #endif
