@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 
-std::string toto();
 
 #endif

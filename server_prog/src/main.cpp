@@ -6,6 +6,8 @@
 
 int main()
 {
+    std::cout << "Bonjour, je suis le serveur et je m'appelle " << std::endl;
+  
     int server_socket = 0, client_socket;
     // struct timeval timeout;
     fd_set readfds;
