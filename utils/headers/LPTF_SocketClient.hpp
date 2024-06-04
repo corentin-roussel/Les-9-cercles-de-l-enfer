@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include <string>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
 #include <netdb.h> 
+#include "LPTF_SocketBase.hpp"
 
 
 #if defined(_WIN32) // Windows
@@ -26,7 +26,7 @@ typedef SSIZE_T ssize_t;
 #define SOCKET_ERROR (-1)
 #endif
 
-class LPTF_SocketClient
+class LPTF_SocketClient : public LPTF_SocketBase
 {
     private:
     int client_socket, server_port_num, action_output;

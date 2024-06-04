@@ -4,7 +4,7 @@
 #define MAX_CLIENTS 10
 
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <vector>
 #include <unistd.h>
 #include <algorithm>
@@ -14,5 +14,6 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <sys/types.h>
+#include "../../utils/headers/LPTF_SocketServer.hpp"
 
 #endif
